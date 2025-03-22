@@ -40,7 +40,8 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"ms-windows-ai-studio.windows-ai-studio",
-				"mathematic.vscode-pdf"
+				"mathematic.vscode-pdf",
+				"alexcvzz.vscode-sqlite"
 			]
 		}
 	},
