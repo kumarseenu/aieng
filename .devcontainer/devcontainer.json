@@ -44,6 +44,9 @@
 			]
 		}
 	},
+	"features": {
+		"ghcr.io/warrenbuckley/codespace-features/sqlite:latest": {}
+	},
 	"remoteUser": "vscode",
 	// Update welcome text and set terminal prompt to '$ '
 	"onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
