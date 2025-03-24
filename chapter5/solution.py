@@ -238,8 +238,6 @@ class ProductSearch:
             print(f"   {result['description']}")
             print()
 
-# Main execution - demonstrates the solution
-
 
 def main():
     # 1. Create ProductSearch instance
