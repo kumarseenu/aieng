@@ -1,4 +1,4 @@
 if [ -f requirements.txt ]; then
   pip install uv
-  uv pip install --user -r requirements.txt
+  uv pip install --system -r requirements.txt
 fi
