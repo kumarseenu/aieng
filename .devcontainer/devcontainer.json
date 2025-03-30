@@ -4,8 +4,7 @@
 		"dockerfile": "Dockerfile",
 		"context": "..",
 		"args": {
-			"VARIANT": "3.12", // Set Python version here
-			"NODE_VERSION": "lts/*"
+			"VARIANT": "3.12-bookworm" // Set Python version here
 		}
 	},
 	"customizations": {
