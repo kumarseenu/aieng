@@ -14,7 +14,9 @@ llama-index-readers-web==0.3.8
 llama-index-readers-json==0.3.0
 llama-index-readers-database==0.3.0
 docx2txt==0.9
-llama-index-embeddings-huggingface==0.5.2
+
+# This is a slow dependency to install, even with uv. We install it live in the notebook that uses it
+# llama-index-embeddings-huggingface==0.5.2
 
 # Scikit-Learn
 scikit-learn==1.6.1
