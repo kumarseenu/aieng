@@ -6,3 +6,11 @@ matplotlib==3.10.1
 seaborn==0.13.2
 pandas==2.2.3
 tqdm==4.67.1
+
+# LlamaIndex Deps 
+llama-index-core==0.12.27
+llama-index-readers-file==0.4.7
+llama-index-readers-web==0.3.8
+llama-index-readers-json==0.3.0
+llama-index-readers-database==0.3.0
+docx2txt==0.9
