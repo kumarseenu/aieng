@@ -13,6 +13,8 @@ llama-index-readers-file==0.4.7
 llama-index-readers-web==0.3.8
 llama-index-readers-json==0.3.0
 llama-index-readers-database==0.3.0
+llama-index-retrievers-bm25==0.5.2
+llama-index-vector-stores-chroma==0.4.1
 docx2txt==0.9
 
 # Chroma
@@ -20,6 +22,9 @@ chromadb==0.6.3
 
 # This is a slow dependency to install, even with uv. We install it live in the notebook that uses it
 # llama-index-embeddings-huggingface==0.5.2
+
+# Azure AI Inference
+azure-ai-inference==1.0.0b9
 
 # Scikit-Learn
 scikit-learn==1.6.1
