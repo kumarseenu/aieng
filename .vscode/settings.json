@@ -15,9 +15,8 @@
   "editor.renderLineHighlight": "all",
   "editor.cursorStyle": "line",
   "editor.cursorWidth": 3,
-  "editor.renderIndentGuides": true,
   "editor.guides.indentation": true,
-  "editor.occurrencesHighlight": false,
+  "editor.occurrencesHighlight": "off",
   "editor.renderWhitespace": "none",
   "editor.tokenColorCustomizations": {
     "comments": "#5D9B9B",
