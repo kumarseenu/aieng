@@ -7,6 +7,8 @@
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+echo "Setting up final dependencies with uv..."
+
 # Add uv to PATH (if needed)
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -19,6 +21,8 @@ if [ -f requirements.txt ]; then
   
   # Install jupyter and ipykernel if they're not in requirements.txt
   uv pip install jupyter ipykernel
+
+  echo "Installing dependencies..."
 
   uv pip install -r requirements.txt
 fi
