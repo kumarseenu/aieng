@@ -1,9 +1,7 @@
 from sentence_transformers import SentenceTransformer, util
-import numpy as np
 import time
 import hashlib
-from typing import List, Dict, Tuple
-import torch
+from typing import List, Dict
 
 
 class SemanticSearchEngine:
@@ -18,8 +16,7 @@ class SemanticSearchEngine:
         self.model = SentenceTransformer(model_name)
 
         # Storage for documents and their embeddings
-        self.document_embeddings = []
-        self.document_metadata = []
+        self.documents = []  # List of document dictionaries
 
         # Setup embedding cache
         self.embedding_cache = {}
@@ -34,35 +31,23 @@ class SemanticSearchEngine:
             documents: List of document dictionaries with 'id' and 'content' keys
             batch_size: Batch size for efficient embedding generation
         """
-        # Extract document content
-        doc_contents = [doc['content'] for doc in documents]
-
         # Process in batches for efficiency
-        for i in range(0, len(doc_contents), batch_size):
-            batch = doc_contents[i:i+batch_size]
+        for i in range(0, len(documents), batch_size):
+            batch = documents[i:i+batch_size]
+            batch_contents = [doc['content'] for doc in batch]
 
             # Generate embeddings for batch
-            batch_embeddings = self.model.encode(batch, convert_to_tensor=True)
+            batch_embeddings = self.model.encode(batch_contents)
 
-            # Store embeddings and metadata
+            # Store documents with their embeddings
             for j, embedding in enumerate(batch_embeddings):
-                doc_idx = i + j
-                if doc_idx < len(documents):
-                    self.document_embeddings.append(embedding)
-                    self.document_metadata.append({
-                        'id': documents[doc_idx]['id'],
-                        'content': documents[doc_idx]['content']
-                    })
+                self.documents.append({
+                    'id': batch[j]['id'],
+                    'content': batch[j]['content'],
+                    'embedding': embedding  # Stored as a list
+                })
 
-        # Convert list of embeddings to a tensor for efficient similarity computation
-        if self.document_embeddings:
-            if isinstance(self.document_embeddings[0], torch.Tensor):
-                self.document_embeddings = torch.stack(
-                    self.document_embeddings)
-            else:
-                self.document_embeddings = np.array(self.document_embeddings)
-
-    def _get_embedding(self, text: str) -> np.ndarray:
+    def _get_embedding(self, text: str) -> List[float]:
         """
         Get embedding for a text, using cache if available.
 
@@ -70,7 +55,7 @@ class SemanticSearchEngine:
             text: The text to embed
 
         Returns:
-            The embedding vector for the text
+            The embedding vector for the text as a list
         """
         # Create a hash of the input text to use as cache key
         text_hash = hashlib.md5(text.encode('utf-8')).hexdigest()
@@ -82,7 +67,7 @@ class SemanticSearchEngine:
 
         # If not in cache, generate the embedding
         self.cache_misses += 1
-        embedding = self.model.encode(text, convert_to_tensor=True)
+        embedding = self.model.encode(text)
 
         # Cache the embedding
         self.embedding_cache[text_hash] = embedding
@@ -103,24 +88,24 @@ class SemanticSearchEngine:
         # Get embedding for the query (using cache if possible)
         query_embedding = self._get_embedding(query)
 
-        # Calculate cosine similarity between query and all documents
-        cos_scores = util.cos_sim(query_embedding, self.document_embeddings)[0]
+        # Calculate similarities between query and all documents
+        results = []
+        for doc in self.documents:
+            # Use sentence-transformers util for cosine similarity
+            similarity = util.cos_sim(
+                [query_embedding], [doc['embedding']])[0][0]
 
-        # Get top_k results
-        top_results = []
-        top_indices = torch.topk(cos_scores, k=min(top_k, len(cos_scores)))[1]
+            results.append({
+                'id': doc['id'],
+                'content': doc['content'],
+                'score': float(similarity)
+            })
 
-        for idx in top_indices:
-            result = {
-                'id': self.document_metadata[idx]['id'],
-                'content': self.document_metadata[idx]['content'],
-                'score': cos_scores[idx].item()
-            }
-            top_results.append(result)
+        # Sort by score in descending order and take top_k
+        results.sort(key=lambda x: x['score'], reverse=True)
+        return results[:top_k]
 
-        return top_results
-
-    def get_cache_stats(self) -> Dict[str, int]:
+    def get_cache_stats(self) -> Dict[str, any]:
         """
         Return statistics about the cache performance.
 
@@ -147,7 +132,6 @@ if __name__ == "__main__":
         {"id": "doc3", "content": "Understanding your monthly billing statement"},
         {"id": "doc4", "content": "How to upgrade your subscription plan"},
         {"id": "doc5", "content": "Setting up two-factor authentication for security"},
-        # Add more documents as needed
     ]
 
     # Sample queries

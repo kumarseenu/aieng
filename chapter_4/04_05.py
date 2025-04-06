@@ -1,8 +1,7 @@
 from sentence_transformers import SentenceTransformer, util
-import numpy as np
 import time
 import hashlib
-from typing import List, Dict, Tuple
+from typing import List, Dict
 
 
 class SemanticSearchEngine:
@@ -30,10 +29,10 @@ class SemanticSearchEngine:
         # TODO: Process documents in batches and store their embeddings
         # - Process documents in batches of the specified size
         # - Generate embeddings for each batch
-        # - Store document embeddings with their metadata
+        # - Store documents with their embeddings in your data structure
         pass
 
-    def _get_embedding(self, text: str) -> np.ndarray:
+    def _get_embedding(self, text: str) -> List[float]:
         """
         Get embedding for a text, using cache if available.
 
@@ -41,12 +40,13 @@ class SemanticSearchEngine:
             text: The text to embed
 
         Returns:
-            The embedding vector for the text
+            The embedding vector for the text as a list
         """
         # TODO: Implement caching for embeddings
-        # - Create a hash of the input text
-        # - Check if embedding exists in cache
-        # - If not, generate and cache the embedding
+        # - Create a hash of the input text to use as a cache key
+        # - Check if the embedding exists in the cache
+        # - If it does, increment cache hit counter and return cached embedding
+        # - If not, generate the embedding, cache it, increment cache miss counter
         # - Return the embedding
         pass
 
@@ -64,10 +64,11 @@ class SemanticSearchEngine:
         # TODO: Implement semantic search functionality
         # - Get embedding for the query (using cache if possible)
         # - Calculate similarity between query and all documents
-        # - Return top_k results with their scores and metadata
+        # - Sort the results by similarity score in descending order
+        # - Return top_k results with their scores and document data
         pass
 
-    def get_cache_stats(self) -> Dict[str, int]:
+    def get_cache_stats(self) -> Dict[str, any]:
         """
         Return statistics about the cache performance.
 
@@ -75,6 +76,9 @@ class SemanticSearchEngine:
             Dictionary with cache hit/miss statistics
         """
         # TODO: Return cache statistics
+        # - Calculate total cache accesses
+        # - Calculate hit rate percentage
+        # - Return a dictionary with hits, misses, total, and hit rate
         pass
 
 
@@ -87,7 +91,6 @@ if __name__ == "__main__":
         {"id": "doc3", "content": "Understanding your monthly billing statement"},
         {"id": "doc4", "content": "How to upgrade your subscription plan"},
         {"id": "doc5", "content": "Setting up two-factor authentication for security"},
-        # Add more documents as needed
     ]
 
     # Sample queries
@@ -121,4 +124,8 @@ if __name__ == "__main__":
 
     # Print cache statistics
     print("\nCache statistics:")
-    print(search_engine.get_cache_stats())
+    stats = search_engine.get_cache_stats()
+    print(f"Cache hits: {stats['hits']}")
+    print(f"Cache misses: {stats['misses']}")
+    print(f"Total cache accesses: {stats['total']}")
+    print(f"Hit rate: {stats['hit_rate_percent']:.2f}%")
