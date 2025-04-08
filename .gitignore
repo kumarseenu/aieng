@@ -4,3 +4,4 @@ node_modules
 npm-debug.log
 *.sqlite3
 scratch/
+chapter_2/downloaded_model/
