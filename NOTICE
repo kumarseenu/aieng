@@ -1,11 +1,114 @@
-Copyright 2023 LinkedIn Corporation
+Copyright 2025 LinkedIn Corporation
 All Rights Reserved.
 
 Licensed under the LinkedIn Learning Exercise File License (the "License").
 See LICENSE in the project root for license information.
 
 ATTRIBUTIONS:
-[PLEASE PROVIDE ATTRIBUTIONS OR DELETE THIS AND THE ABOVE LINE “ATTRIBUTIONS”]
+
+--------------------------------------------------------------------------
+llama-index-retrievers-bm25
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+docx2txt
+[https://github.com/ankushshah89/python-docx2txt](https://github.com/ankushshah89/python-docx2txt)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+pandas
+[https://github.com/pandas-dev/pandas](https://github.com/pandas-dev/pandas)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+llama-index-readers-database
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+tqdm
+[https://github.com/tqdm/tqdm](https://github.com/tqdm/tqdm)
+License: MPL-2.0
+[https://www.mozilla.org/en-US/MPL/2.0/](https://www.mozilla.org/en-US/MPL/2.0/)
+--------------------------------------------------------------------------------
+
+llama-index-readers-file
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+seaborn
+[https://github.com/mwaskom/seaborn](https://github.com/mwaskom/seaborn)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+scikit-learn
+[https://github.com/scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+chromadb
+[https://github.com/chroma-core/chroma](https://github.com/chroma-core/chroma)
+License: Apache-2.0
+[https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+------------------------------------------------------------------------------------------
+
+llama-index-core
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+llama-index-vector-stores-chroma
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+matplotlib
+[https://github.com/matplotlib/matplotlib](https://github.com/matplotlib/matplotlib)
+License: PSF
+[https://opensource.org/licenses/PSF-2.0](https://opensource.org/licenses/PSF-2.0)
+----------------------------------------------------------------------------------
+
+ipykernel
+[https://github.com/ipython/ipykernel](https://github.com/ipython/ipykernel)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+ipywidgets
+[https://github.com/jupyter-widgets/ipywidgets](https://github.com/jupyter-widgets/ipywidgets)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+jupyter
+[https://github.com/jupyter/jupyter](https://github.com/jupyter/jupyter)
+License: BSD-3-Clause
+[https://opensource.org/licenses/BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+--------------------------------------------------------------------------------------------
+
+llama-index-readers-json
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
+llama-index-readers-web
+[https://github.com/run-llama/llama\_index](https://github.com/run-llama/llama_index)
+License: MIT
+[https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+--------------------------------------------------------------------------
+
 
 Please note, this project may automatically load third party code from external 
 repositories (for example, NPM modules, Composer packages, or other dependencies). 
